@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Clientes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cadastro de Clientes</h1>
+    <!-- Botão voltar -->
+  <a href="index.html" class="btn-back">⬅ Voltar ao índice</a>
+
+
+  <form id="formCliente">
+    <input type="text" name="cpf" placeholder="CPF" required>
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="email" name="email" placeholder="Email">
+    <input type="text" name="telefone" placeholder="Telefone">
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <h2>Lista de Clientes</h2>
+  <table id="tabelaClientes" border ="1">
+    <thead>
+      <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>

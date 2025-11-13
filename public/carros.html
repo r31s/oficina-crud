@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Carros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cadastro de Carros</h1>
+
+  <!-- Botão voltar -->
+  <a href="index.html" class="btn-back">⬅ Voltar ao índice</a>
+
+  <!-- Formulário de cadastro -->
+  <form id="formCarro">
+    <input type="text" name="placa" placeholder="Placa" required>
+    <input type="text" name="modelo" placeholder="Modelo" required>
+    <input type="text" name="marca" placeholder="Marca" required>
+    <input type="text" name="cpf_cliente" placeholder="CPF do Cliente (opcional)">
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <!-- Tabela de carros -->
+  <h2>Lista de Carros</h2>
+  <table id="tabelaCarros" border="1">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>CPF do Cliente</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Linhas serão inseridas pelo JS -->
+    </tbody>
+  </table>
+
+  <script src="script_carros.js" defer></script>
+</body>
+</html>
