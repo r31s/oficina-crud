@@ -154,8 +154,48 @@ app.delete('/api/clientes/:cpf', (req, res) => {
     res.send("Cliente excluído com sucesso!");
   });
 });
+// ========== ROTA DE PESQUISA (CARROS) ==========
+app.get('/api/pesquisar', (req, res) => {
+  const termo = req.query.q;
+
+  if (!termo) {
+    return res.json([]);
+  }
+
+  const sql = "SELECT * FROM carros WHERE modelo LIKE ? OR marca LIKE ? OR placa LIKE ?";
+  db.query(sql, [`%${termo}%`, `%${termo}%`, `%${termo}%`], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Erro ao pesquisar");
+    }
+    res.json(results);
+  });
+});
+// ========== ROTA DE PESQUISA CLIENTES ==========
+app.get('/api/pesquisar/clientes', (req, res) => {
+  const termo = req.query.q;
+
+  if (!termo) return res.json([]);
+
+  const sql = `
+    SELECT * FROM clientes
+    WHERE cpf LIKE ? 
+       OR nome LIKE ?
+       OR email LIKE ?
+       OR telefone LIKE ?
+  `;
+
+  const filtro = `%${termo}%`;
+
+  db.query(sql, [filtro, filtro, filtro, filtro], (err, results) => {
+    if (err) return res.status(500).send("Erro ao pesquisar clientes");
+    res.json(results);
+  });
+});
+
+
 
 // ================== INICIAR SERVIDOR ==================
 app.listen(port, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${port}`);
+  console.log(` Servidor rodando em http://localhost:${port}`);
 });

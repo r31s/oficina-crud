@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisar Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body { font-family: Arial; padding: 20px; }
+      .resultado { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h1>Pesquisar Dados</h1>
+
+<select id="tipo">
+    <option value="carros">Carros</option>
+    <option value="clientes">Clientes</option>
+</select>
+
+<input type="text" id="campo" placeholder="Digite algo para pesquisar">
+<button onclick="pesquisar()">Pesquisar</button>
+
+<hr>
+
+<div id="resultado"></div>
+
+<script>
+async function pesquisar() {
+    const tipo = document.getElementById("tipo").value;
+    const termo = document.getElementById("campo").value;
+
+    if (!termo) {
+        alert("Digite algo para pesquisar");
+        return;
+    }
+
+    let url = "";
+
+    if (tipo === "carros") {
+        url = `/api/pesquisar?q=${termo}`;              // ✔️ rota correta
+    } else {
+        url = `/api/pesquisar/clientes?q=${termo}`;     // ✔️ rota correta
+    }
+
+    const resp = await fetch(url);
+    const dados = await resp.json();
+
+    const div = document.getElementById("resultado");
+    div.innerHTML = "";
+
+    if (dados.length === 0) {
+        div.innerHTML = "<p>Nenhum resultado encontrado.</p>";
+        return;
+    }
+
+    dados.forEach(item => {
+        if (tipo === "carros") {
+            div.innerHTML += `
+                <div class="resultado">
+                    <strong>Placa:</strong> ${item.placa}<br>
+                    <strong>Modelo:</strong> ${item.modelo}<br>
+                    <strong>Marca:</strong> ${item.marca}<br>
+                    <strong>CPF Cliente:</strong> ${item.cpf_cliente}
+                </div>
+            `;
+        } else {
+            div.innerHTML += `
+                <div class="resultado">
+                    <strong>CPF:</strong> ${item.cpf}<br>
+                    <strong>Nome:</strong> ${item.nome}<br>
+                    <strong>Email:</strong> ${item.email || "-"}<br>
+                    <strong>Telefone:</strong> ${item.telefone || "-"}
+                </div>
+            `;
+        }
+    });
+}
+</script>
+
+
+</body>
+</html>
