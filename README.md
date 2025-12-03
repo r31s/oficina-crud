@@ -115,7 +115,7 @@ Servidor rodando em http://localhost:3000.
 Criou-se index.html com botões de navegação para Clientes e Carros.
 
 
-Criou-se cliente.html e carros.html com:
+Criou-se cliente.html , carros.html e pesquisa.html com:
 
 
 
@@ -270,11 +270,3 @@ Abrir no navegador:
 
 
 http://localhost:3000/index.html
-
-
-Autor
-Luan Borges Reis
-Projeto desenvolvido como prática de CRUD completo com Node.js, MySQL e frontend dinâmico.
-
-Se você quiser, Luan, eu posso também criar uma versão “resumida visual” do README com imagens e instruções ainda mais amigáveis, pronta para colocar no GitHub.
-Quer que eu faça isso também?
