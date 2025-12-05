@@ -1,4 +1,4 @@
-# 🛠️ Guia Rápido para Rodar o Projeto Oficina-CRUD
+se# 🛠️ Guia Rápido para Rodar o Projeto Oficina-CRUD
 
 Este é um guia **resumido e direto** para executar o projeto Oficina-CRUD após clonar o repositório.
 
@@ -78,10 +78,3 @@ Abra:
 ```
 http://localhost:3000
 ```
-
----
-
-## ✔️ Pronto!
-
-O projeto estará rodando localmente. Se precisar rodar em rede local ou tiver erros, peça ajuda 😉
-
